@@ -28,7 +28,7 @@ app.get("/health", (req, res) => {
   );
 });
 
-app.use("/api/leads", leadRoutes);
+app.use("/api/v1/leads", leadRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
