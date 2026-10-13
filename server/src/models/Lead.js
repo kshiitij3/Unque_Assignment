@@ -26,6 +26,18 @@ const leadSchema = new mongoose.Schema(
       unique: true,
       sparse: true,
     },
+     metaPageId: {
+      type: String,
+      default: "",
+    },
+    metaFormId: {
+      type: String,
+      default: "",
+    },
+    metaAdId: {
+      type: String,
+      default: "",
+    },
     leadCreatedAt: {
       type: Date,
       default: Date.now,

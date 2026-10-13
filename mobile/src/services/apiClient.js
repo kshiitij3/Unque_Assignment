@@ -28,7 +28,7 @@ export async function apiRequest(path,options = {}){
     result = await response.json();
 
   } catch{
-    throw new Error("The backnend returned an invalid JSON response.");
+    throw new Error("The backend returned an invalid JSON response.");
   }
 
   if(!response.ok){

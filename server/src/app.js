@@ -9,6 +9,7 @@ import leadRoutes from './routes/lead.routes.js';
 import ApiResponse from './utils/ApiResponse.js';
 import notFound from './middleware/notFound.middleware.js';
 import errorHandler from './middleware/error.middleware.js';
+import metaWebhookRoutes from "./routes/metaWebhook.routes.js";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ const app = express();
 const server = http.createServer(app);
 
 app.use(cors());
+app.use("/webhooks/meta", metaWebhookRoutes);
 app.use(express.json());
 
 initializeSocket(server);

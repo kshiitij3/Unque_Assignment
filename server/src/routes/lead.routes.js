@@ -9,9 +9,16 @@ const router = Router();
 router.get('/',getLeads);
 
 
-// Development/testing only. Disable before public deployment.
-if (process.env.NODE_ENV !== "production") {
-  router.post("/dummy", createDummyLead);
-}
+router.post(
+  "/dummy",
+  (req, res, next) => {
+    if (process.env.NODE_ENV === "production") {
+      return res.sendStatus(404);
+    }
+
+    next();
+  },
+  createDummyLead
+);
 
 export default router;
