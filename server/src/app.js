@@ -10,6 +10,7 @@ import ApiResponse from './utils/ApiResponse.js';
 import notFound from './middleware/notFound.middleware.js';
 import errorHandler from './middleware/error.middleware.js';
 import metaWebhookRoutes from "./routes/metaWebhook.routes.js";
+import { startMetaTestLeadPolling } from "./services/metaTestLeadPoller.service.js";
 
 dotenv.config();
 
@@ -38,6 +39,7 @@ app.use(errorHandler);
 const startServer = async ()=>{
   try{
     await connectDB();
+    startMetaTestLeadPolling();
 
     const PORT = process.env.PORT || 3000;
     server.listen(PORT,"0.0.0.0",()=>{

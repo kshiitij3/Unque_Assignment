@@ -86,6 +86,13 @@ export async function receiveMetaWebhook(req, res) {
 
   try {
     for (const notification of notifications) {
+      if (notification.leadId === "444444444444") {
+        console.log(
+          "[META WEBHOOK] Dashboard test received; skipping synthetic lead lookup."
+        );
+        continue;
+      }
+
       await processMetaLeadNotification(notification);
     }
 
